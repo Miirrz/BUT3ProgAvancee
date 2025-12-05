@@ -1,0 +1,55 @@
+html {
+    background-color : rgb(45, 44, 44); 
+    color: white;
+}
+
+body {
+    margin-left : 20%;
+    margin-right: 20%;
+    background-color: rgb(45, 44, 44);
+}
+
+form {
+    padding : 5%;
+    border: 1px solid black;
+}
+
+h1 {
+    text-align: center;
+}
+
+.champs {
+    div {
+        margin-left: 10%;
+        margin-bottom: 3px;
+    
+        label {
+            display : inline-block;
+            width : 15%;
+            text-align: left;
+            margin-right: 5%;
+        }
+    
+        input {
+            display : inline-block;
+            width : 40%;
+            color: white;
+            text-align: center;
+        }
+    }
+}
+
+input {
+    background : transparent;
+    border: 2px solid;
+    border-image: linear-gradient(to right, rgba(255, 166, 0, 0.726) 0%, rgba(255, 166, 0, 0.283) 10%, rgba(255, 166, 0, 0.726) 25%, rgba(255, 166, 0, 0.283) 65%, rgba(255, 166, 0, 0.726) 100% ) 1;
+}
+
+.checkbox {
+    margin-left: 10%;
+    padding-bottom: 3%;
+}
+
+button {
+    margin-left: 10%;
+}

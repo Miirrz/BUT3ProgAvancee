@@ -1,0 +1,25 @@
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-info h4 {
+    margin: 10px 0;
+}
+
+.product-info p {
+    font-weight: bold;
+}
