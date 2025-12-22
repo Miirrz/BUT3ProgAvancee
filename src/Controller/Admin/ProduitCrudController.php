@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use App\Enum\ProduitStatut;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField; 
 
 class ProduitCrudController extends AbstractCrudController
 {
@@ -25,9 +26,10 @@ class ProduitCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('name'),
             TextEditorField::new('description'),
+            AssociationField::new('category'),
             MoneyField::new('price')->setCurrency('EUR'),
             IntegerField::new('stock'),
-            ChoiceField::new('statut')->setChoices(ProduitStatut::cases()),
+            ChoiceField::new('statut')->setChoices(ProduitStatut::cases())
         ];
     }
 }

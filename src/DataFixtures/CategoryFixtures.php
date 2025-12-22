@@ -24,6 +24,7 @@ class CategoryFixtures extends Fixture
     const categories = [
         "Armure",
         "Arme",
+        "Bouclier",
         "Anneau",
         "Flèche",
         "Carreau",

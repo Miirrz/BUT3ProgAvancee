@@ -40,7 +40,7 @@ class Produit
     #[ORM\OneToMany(targetEntity: CommandeProduit::class, mappedBy: 'produit', cascade: ["persist"])]
     private Collection $commandeProduits;
 
-    #[ORM\ManyToOne(inversedBy: 'produit')]
+    #[ORM\ManyToOne(inversedBy: 'produit', cascade:  ['persist', 'remove'])]
     private ?Category $category = null;
 
     public function __construct()
