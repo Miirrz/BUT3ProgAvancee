@@ -1,11 +1,129 @@
 {% extends '@EasyAdmin/page/content.html.twig' %}
 
-{% trans_default_domain 'admin' %}
-
 {% block content_title %}
-    {{ "titre" | trans}}
+    Tableau de Bord
 {% endblock %}
 
 {% block main %}
-    <a href="{{ path('accueil') }}">{{ "retour" | trans }}</a>
+    <style> 
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .dashboard-card {
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
+        }
+        .dashboard-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.75rem;
+        }
+        .dashboard-card ul {
+            padding-left: 0;
+            list-style: none;
+        }
+        .dashboard-card li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .dashboard-card li:last-child {
+            border-bottom: none;
+        }
+        .progress {
+            height: 20px;
+            margin-bottom: 1rem;
+        }
+    </style>
+
+    <div class="dashboard-grid">
+ 
+        <div class="dashboard-card" style="grid-column: 1 / -1;">
+            <h3>Montant Total des Ventes (Statut: Livrée)</h3>
+            <canvas id="salesChart"></canvas>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Les 5 Dernières Commandes</h3>
+            <ul>
+                {% for order in lastCommandes %}
+                    <li>
+                        <span>{{ order.reference }} - {{ order.user.email }}</span>
+                        <strong>{{ order.createdAt|date('d/m/Y') }}</strong>
+                    </li>
+                {% else %}
+                    <li>Aucune commande récente.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Nombre de Produits par Catégorie</h3>
+            <ul>
+                {% for item in produitsParCateg %}
+                    <li>
+                        <span>{{ item.nomCateg }}</span>
+                        <strong>{{ item.compteProduit }}</strong>
+                    </li>
+                {% else %}
+                    <li>Aucun produit trouvé.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Disponibilité des Produits</h3>
+            <div class="progress" role="progressbar">
+                <div class="progress-bar bg-success" style="width: {{ dispoRatio.en_stock|round(2) }}%" title="En Stock">{{ dispoRatio.en_stock|round(2) }}%</div>
+                <div class="progress-bar bg-warning" style="width: {{ dispoRatio.precommande|round(2) }}%" title="Précommande">{{ dispoRatio.precommande|round(2) }}%</div>
+                <div class="progress-bar bg-danger" style="width: {{ dispoRatio.rupture|round(2) }}%" title="Rupture">{{ dispoRatio.rupture|round(2) }}%</div>
+            </div>
+            <ul>
+                <li style="color: #198754;">En Stock: {{ dispoRatio.en_stock|round(2) }}%</li>
+                <li style="color: #ffc107;">En Précommande: {{ dispoRatio.precommande|round(2) }}%</li>
+                <li style="color: #dc3545;">En Rupture: {{ dispoRatio.rupture|round(2) }}%</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body_javascript %}
+    {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('salesChart').getContext('2d');
+            const dataVentes = {{ ventesParMois|json_encode|raw }};
+
+            const labels = dataVentes.map(d => d.month);
+            const data = dataVentes.map(d => d.total);
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Ventes par Mois (€)',
+                        data: data,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}
