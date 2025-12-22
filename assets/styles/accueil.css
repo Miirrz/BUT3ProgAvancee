@@ -1,26 +1,45 @@
-.product-grid {
+@font-face {
+    font-family: 'OptimusPrinceps';
+    src: url('./fonts/OptimusPrinceps/OptimusPrinceps.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OptimusPrinceps';
+    src: url('./fonts/OptimusPrinceps/OptimusPrincepsSemiBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+.listeProduits {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    padding-top : 70px;
+    padding-bottom: 70px;
 }
 
-.product-card {
+.caseProduit {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 15px;
     text-align: center;
 }
 
-.product-card img {
+.caseProduit img {
     max-width: 100%;
     height: auto;
 }
 
-.product-info h4 {
+.infoProduit h4 {
     margin: 10px 0;
     font-family: "OptimusPrinceps", serif;
 }
 
-.product-info p {
-    font-weight: bold;
+body {
+    margin-left: 10%;
+    margin-right: 10%;
 }

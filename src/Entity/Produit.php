@@ -40,6 +40,9 @@ class Produit
     #[ORM\OneToMany(targetEntity: CommandeProduit::class, mappedBy: 'produit', cascade: ["persist"])]
     private Collection $commandeProduits;
 
+    #[ORM\ManyToOne(inversedBy: 'produit')]
+    private ?Category $category = null;
+
     public function __construct()
     {
         $this->commandeProduits = new ArrayCollection();
@@ -153,6 +156,18 @@ class Produit
                 $commandeProduit->setProduit(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }

@@ -5,11 +5,11 @@
 
 {% block body %}
     <h1> {{"titre" | trans}} </h1>
-    <div class="product-grid">
+    <div class="listeProduits">
         {% for produit in produits %}
-            <div class="product-card">
+            <div class="caseProduit">
                 <img src="{{ produit.image.url }}" alt="{{ produit.name }}">
-                <div class="product-info">
+                <div class="infoProduit">
                     <h4>{{ produit.name }}</h4>
                     <p>{{ produit.price }} €</p>
                 </div>

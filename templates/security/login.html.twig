@@ -3,13 +3,12 @@
 
 {% block title %} {{"page" | trans}} {% endblock %}
 
-{% block body %}
-<link href="{{ asset('../css/login.css') }}" rel="stylesheet">
+{% block stylesheets %}
+    <link href="{{ asset('../css/login.css') }}" rel="stylesheet">
+{% endblock %}
 
+{% block body %}
 <form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
 
     {% if app.user %}
         <div class="mb-3">
@@ -36,6 +35,15 @@
         </label>
     </div>
 
+    {% if error %}
+    <div class="alert alert-danger">
+        <span class="loginErreurIcone">⚠️</span>
+        <span class="loginErreurText"> {{ error.messageKey|trans(error.messageData, 'security') }}</span>
+    </div>
+
+        
+        
+    {% endif %}
 
     <button class="btn btn-lg btn-primary" type="submit">
         {{ "bouton" | trans }}

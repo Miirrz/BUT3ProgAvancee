@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
 
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <link rel="icon" type="image/png" href="{{ asset('assets/bonfire.png') }}" >
 
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
@@ -16,26 +16,22 @@
     </head>
 
     <body>
-        <header class="site-header">
-            <div class="site-header__content">
-                <div class="site-header__left">
-                    <a href="{{ path('accueil') }}" class="site-header__logo-link">
-                        <img src="https://img1.picmix.com/output/stamp/normal/4/1/4/2/2292414_166dc.png"
-                             class="site-header__logo">
-                    </a>
-                    <span class="site-header__title">L'Entre-Braises</span>
-                </div>
+        <header class="banniere">
+            <div class="banniereContenu">
+                <a href="{{ path('accueil') }}" class="banniereGauche">
+                    <img src="https://img1.picmix.com/output/stamp/normal/4/1/4/2/2292414_166dc.png" class="banniereLogo">
+                    <span class="banniereTitre">L'Entre-Braise</span>
+                </a>
 
-                <div class="site-header__right">
-                    <a href="{{ path('app_login') }}" class="site-header__login-btn">
+                <div class="banniereDroite">
+                    <a href="{{ path('app_login') }}" class="banniereLogin">
                         Connexion
                     </a>
                 </div>
             </div>
         </header>
 
-        {# Contenu propre à chaque page #}
-        <main>
+        <main class="contenuPage">
             {% block body %}{% endblock %}
         </main>
     </body>

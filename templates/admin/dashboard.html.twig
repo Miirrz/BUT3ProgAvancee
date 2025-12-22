@@ -1,0 +1,11 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% trans_default_domain 'admin' %}
+
+{% block content_title %}
+    {{ "titre" | trans}}
+{% endblock %}
+
+{% block main %}
+    <a href="{{ path('accueil') }}">{{ "retour" | trans }}</a>
+{% endblock %}
