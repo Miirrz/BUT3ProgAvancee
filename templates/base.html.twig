@@ -21,12 +21,14 @@
                 <a href="{{ path('accueil') }}" class="banniereGauche">
                     <img src="https://img1.picmix.com/output/stamp/normal/4/1/4/2/2292414_166dc.png" class="banniereLogo">
                     <span class="banniereTitre">L'Entre-Braise</span>
+                    {% if is_granted('ROLE_ADMIN') %} 
+                        <a href="{{ path('admin')}}">Tableau de bord</a>
+                    {% endif %}
                 </a>
                 
                 <div class="banniereDroite">
                     <div class="choixLangage">
                         <div class="langageChoisi">
-                            {{ app.request.locale }}
                             <img src="{{ asset('styles/images/' ~ app.request.locale  ~ '.png') }}">
                         </div>
                         <ul class="selectionLangage">
