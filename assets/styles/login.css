@@ -19,40 +19,26 @@ h1 {
     text-align: center;
 }
 
-.champs {
-    div {
-        margin-left: 10%;
-        margin-bottom: 3px;
-    
-        label {
-            display : inline-block;
-            width : 15%;
-            text-align: left;
-            margin-right: 5%;
-        }
-    
-        input {
-            display : inline-block;
-            width : 40%;
-            color: white;
-            text-align: center;
-        }
-    }
-}
-
 input {
     background : transparent;
     border: 2px solid;
     border-image: linear-gradient(to right, rgba(255, 166, 0, 0.726) 0%, rgba(255, 166, 0, 0.283) 10%, rgba(255, 166, 0, 0.726) 25%, rgba(255, 166, 0, 0.283) 65%, rgba(255, 166, 0, 0.726) 100% ) 1;
 }
 
-.checkbox {
-    margin-left: 10%;
-    padding-bottom: 3%;
-}
-
 button {
     margin-left: 10%;
+}
+
+.champs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.email, .password {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
 }
 
 .alert {
@@ -72,10 +58,11 @@ button {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
-.loginErreurIcone {
-    font-size: 1.4rem;
+.rememberMe {
+    margin-left : 40%;
 }
 
-.loginErreurText {
-    flex: 1;
+.validerForm {
+    margin-left : 43%;
+    margin-top : 1rem;
 }

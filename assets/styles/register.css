@@ -1,0 +1,52 @@
+/* --- Conteneur principal --- */
+.registerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 500px;
+}
+
+.registerForm form {
+    width: 100%;
+}
+
+.registerForm form > div:not(.agree-terms-row) {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 1rem;
+}
+
+.registerForm form > div:not(.agree-terms-row) > label {
+    width: 120px;
+    flex-shrink: 0;    
+    text-align: right;
+    margin-right: 1rem; 
+}
+
+.registerForm form > div:not(.agree-terms-row) > div {
+    flex-grow: 1;
+}
+
+.registerForm form > div:not(.agree-terms-row) input {
+    width: 100%; 
+}
+
+.agree-terms-row {
+    display: flex;          
+    align-items: center;    
+    margin-left: 120px;     
+    padding-left: 1rem;  
+}
+
+.agree-terms-row label {
+    margin-left: 0.5rem; 
+    margin-bottom: 0;
+    white-space: nowrap; 
+}
+
+.validerForm {
+    margin-left : 50%;
+    margin-top : 1rem;
+}

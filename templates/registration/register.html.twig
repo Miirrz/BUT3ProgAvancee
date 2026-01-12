@@ -1,21 +1,38 @@
 {% extends 'base.html.twig' %}
+{% trans_default_domain 'register' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}{{"titre" | trans}}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/register.css') }}">
+{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <div class="registerForm">
+        <h1> {{"titre" | trans}} </h1>
 
-    {{ form_errors(registrationForm) }}
+        {{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.firstName) }}
-        {{ form_row(registrationForm.lastName) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-        
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email, {
+                label : "email" | trans
+            }) }}
+            {{ form_row(registrationForm.firstName, {
+                label: "prenom" | trans
+            }) }}
+            {{ form_row(registrationForm.lastName, {
+                label: "nom" | trans
+            }) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: "mdp" | trans
+            }) }}
+            {{ form_row(registrationForm.agreeTerms, {
+                label: "terms" | trans,
+                row_attr: { class: 'agree-terms-row' } 
+            }) }}
+            
+            <button type="submit" class="validerForm">{{"valider" | trans}}</button>
+        {{ form_end(registrationForm) }}
+    </div>
 {% endblock %}
