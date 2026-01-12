@@ -40,12 +40,19 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="{{ path('app_login') }}" class="banniereLogin">
-                        Connexion
-                    </a>
-                    <a href="{{ path('app_register') }}" class="banniereInscription">
-                        Inscription
-                    </a>
+                    {# Les conditions sont inversées pour une raison où une autre ??? #}
+                    {% if app.user %} 
+                        <a href="{{ path('app_logout') }}" class="banniereLogout">
+                            Déconnexion
+                        </a>
+                    {% else %}
+                        <a href="{{ path('app_login') }}" class="banniereLogin">
+                            Connexion
+                        </a>
+                        <a href="{{ path('app_register') }}" class="banniereInscription">
+                            Inscription
+                        </a>
+                    {% endif %}
                 </div>
             </div>
         </header>

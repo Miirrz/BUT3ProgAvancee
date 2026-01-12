@@ -5,35 +5,36 @@
 {% endblock %}
 
 {% block main %}
+    {# Car je n'arrive pas à importer un fichier CSS #}
     <style> 
-        .dashboard-grid {
+        .dashboard {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
-        .dashboard-card {
+        .dashboardPartie {
             border: 1px solid #dee2e6;
             border-radius: 0.375rem;
             padding: 1.5rem;
             box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
         }
-        .dashboard-card h3 {
+        .dashboardPartie h3 {
             font-size: 1.25rem;
             margin-bottom: 1rem;
             border-bottom: 1px solid #eee;
             padding-bottom: 0.75rem;
         }
-        .dashboard-card ul {
+        .dashboardPartie ul {
             padding-left: 0;
             list-style: none;
         }
-        .dashboard-card li {
+        .dashboardPartie li {
             display: flex;
             justify-content: space-between;
             padding: 0.5rem 0;
             border-bottom: 1px solid #f0f0f0;
         }
-        .dashboard-card li:last-child {
+        .dashboardPartie li:last-child {
             border-bottom: none;
         }
         .progress {
@@ -42,14 +43,14 @@
         }
     </style>
 
-    <div class="dashboard-grid">
- 
-        <div class="dashboard-card" style="grid-column: 1 / -1;">
+    <div class="dashboard">
+    
+        <div class="dashboardPartie" style="grid-column: 1 / -1;">
             <h3>Montant Total des Ventes (Statut: Livrée)</h3>
             <canvas id="salesChart"></canvas>
         </div>
 
-        <div class="dashboard-card">
+        <div class="dashboardPartie">
             <h3>Les 5 Dernières Commandes</h3>
             <ul>
                 {% for order in lastCommandes %}
@@ -63,7 +64,7 @@
             </ul>
         </div>
 
-        <div class="dashboard-card">
+        <div class="dashboardPartie">
             <h3>Nombre de Produits par Catégorie</h3>
             <ul>
                 {% for item in produitsParCateg %}
@@ -77,7 +78,7 @@
             </ul>
         </div>
 
-        <div class="dashboard-card">
+        <div class="dashboardPartie">
             <h3>Disponibilité des Produits</h3>
             <div class="progress" role="progressbar">
                 <div class="progress-bar bg-success" style="width: {{ dispoRatio.en_stock|round(2) }}%" title="En Stock">{{ dispoRatio.en_stock|round(2) }}%</div>

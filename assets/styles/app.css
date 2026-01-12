@@ -69,7 +69,7 @@ body {
     text-transform: uppercase;
 }
 
-.banniereLogin, .banniereInscription {
+.banniereLogin, .banniereInscription, .banniereLogout {
     padding: 8px 16px;
     border-radius: 4px;
     border: 1px solid #f5f5f5;
@@ -81,7 +81,7 @@ body {
     transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
 }
 
-.banniereLogin:hover {
+.banniereLogin:hover, .banniereInscription:hover, .banniereLogout:hover {
     background: #f5f5f5;
     color: #050505;
     transform: translateY(-1px);

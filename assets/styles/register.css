@@ -31,6 +31,7 @@
 
 .registerForm form > div:not(.agree-terms-row) input {
     width: 100%; 
+    color : white;
 }
 
 .agree-terms-row {
