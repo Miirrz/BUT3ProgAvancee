@@ -28,7 +28,9 @@ class RegistrationController extends AbstractController
             // encode the plain password
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
             
-            $user ->setRoles(["ROLE_USER","ROLE_ADMIN"]);
+            // Si la connection ne marche pas, pour tester le compte admin, remplacer par ["ROLE_USER","ROLE_ADMIN"]  
+            // Puis créer un nouveau compte qui se vera donner le rôle d'admin
+            $user ->setRoles(["ROLE_USER"]); 
 
             $entityManager->persist($user);
             $entityManager->flush();
